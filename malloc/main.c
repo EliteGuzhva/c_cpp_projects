@@ -138,10 +138,10 @@ void test() {
     float f; 
   } foo_t;
 
-  int* a = n_malloc(sizeof(int));
-  float* b = n_malloc(sizeof(float));
+  int* a = (int*)n_malloc(sizeof(int));
+  float* b = (float*)n_malloc(sizeof(float));
   n_free(a);
-  foo_t* c = n_malloc(sizeof(foo_t));
+  foo_t* c = (foo_t*)n_malloc(sizeof(foo_t));
   n_free(b);
   n_free(c);
 }
