@@ -2,7 +2,7 @@
 //! @file   main.cpp
 //! @date   26/08/2021
 
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __APPLE__
 #  include <memory_resource>
 #endif
 
@@ -10,7 +10,7 @@
 
 int main()
 {
-#if defined(__GNUC__) && !defined(__clang__)
+#ifndef __APPLE__
   // do something
 #else
   std::cout << "fuck you\n";
