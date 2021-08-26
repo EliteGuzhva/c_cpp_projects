@@ -1,0 +1,24 @@
+{
+    "configurations": {
+        "Debug": {
+            "adapter": "vscode-cpptools",
+            "configuration": {
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceRoot}/bin/pmr",
+                "args": [],
+                "cwd": "${workspaceRoot}/bin",
+                "externalConsole": false,
+                "stopAtEntry": false,
+                "MiMode": "lldb",
+                "setupCommands": [
+                    {
+                        "text": "-enable-pretty-printing",
+                        "description": "enable pretty printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            }
+        }
+    }
+}
