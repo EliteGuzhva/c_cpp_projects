@@ -4,7 +4,7 @@ set shiftwidth=2
 
 " vim-cmake configuration
 let s:bin_folder = "bin"
-let s:runner = "cpp_async"
+let s:runner = "problems"
 let s:args = ""
 let s:before_script = ""
 let s:conan_args = "--build=missing"
