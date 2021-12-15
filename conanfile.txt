@@ -1,5 +1,5 @@
 [requires]
-opencv/3.4.12@
+opencv/4.5.3@
 catch2/2.13.7@
 
 [generators]

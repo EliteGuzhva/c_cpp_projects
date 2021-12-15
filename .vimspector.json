@@ -1,7 +1,7 @@
 {
     "configurations": {
         "Debug": {
-            "adapter": "vscode-cpptools",
+            "adapter": "CodeLLDB",
             "configuration": {
                 "type": "cppdbg",
                 "request": "launch",
@@ -9,7 +9,7 @@
                 "args": [],
                 "cwd": "${workspaceRoot}/bin",
                 "externalConsole": false,
-                "stopAtEntry": false,
+                "stopAtEntry": true,
                 "MiMode": "lldb",
                 "setupCommands": [
                     {
