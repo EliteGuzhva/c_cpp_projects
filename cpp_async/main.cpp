@@ -59,7 +59,7 @@ private:
     ++counter;
   }
 
-  void sleep(int64_t milliseconds) {
+  static void sleep(int64_t milliseconds) {
     this_thread::sleep_for(chrono::milliseconds(milliseconds));
   }
 };

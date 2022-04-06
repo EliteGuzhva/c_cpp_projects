@@ -4,7 +4,7 @@
 # @created     : Thursday Aug 26, 2021 23:47:20 MSK
 ######################################################################
 
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.16)
 project(c_cpp_projects)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -16,7 +16,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 
 add_subdirectory(cpp_async)
+add_subdirectory(gzv)
 add_subdirectory(pmr)
 add_subdirectory(problems)
 add_subdirectory(utils)
-

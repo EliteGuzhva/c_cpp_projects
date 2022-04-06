@@ -4,7 +4,6 @@
 # @created     : Friday Sep 17, 2021 22:49:23 MSK
 ######################################################################
 
-cmake_minimum_required(VERSION 3.17)
 project(cpp_async)
 
 find_package(OpenCV REQUIRED)

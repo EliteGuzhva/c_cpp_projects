@@ -1,0 +1,23 @@
+{
+  "build_dir": "build",
+  "launch": {
+    "cwd": "bin",
+    "cmd": "./cpp_async",
+    "args": [],
+    "before_script": ""
+  },
+  "cmake": {
+    "exe": "cmake",
+    "build_type": "Debug",
+    "export_compile_commands": true,
+    "generator": "Ninja",
+    "generate_options": [],
+    "build_options": [],
+    "install_prefix": "./install",
+    "target": "cpp_async"
+  },
+  "conan": {
+    "exe": "conan",
+    "args": ["--build=missing"]
+  }
+}
