@@ -4,7 +4,6 @@
  * @created     : Friday Sep 17, 2021 22:49:46 MSK
  */
 
-#include <chrono>
 #include <future>
 #include <iostream>
 #include <thread>
@@ -13,38 +12,46 @@
 
 using namespace std;
 
-class UI {
+class UI
+{
 public:
-  UI() {
+  UI()
+  {
     uiThread_ = make_unique<thread>(&UI::run, this);
   }
 
-  ~UI() {
+  ~UI()
+  {
     stop();
     uiThread_->join();
   }
 
-  [[nodiscard]] int counter() const {
+  [[nodiscard]] int counter() const
+  {
     return counter_;
   }
 
-  void onFrame() {
+  void onFrame()
+  {
     cout << "onFrame started\n";
     sleepForMs(600);
     label_ = counter_ % 2 == 0 ? "Kek" : "Lol";
     cout << "onFrame finished\n";
   }
 
-  void run() {
+  void run()
+  {
     while (!shouldStop_) {
       print();
       auto onFrameFuture = async(&UI::onFrame, this);
       sleepForMs(500);
       increment();
+      onFrameFuture.get();
     }
   }
 
-  void stop() {
+  void stop()
+  {
     shouldStop_ = true;
   }
 
@@ -55,18 +62,21 @@ private:
   unique_ptr<thread> uiThread_;
   std::atomic_bool shouldStop_ = false;
 
-  void print() {
+  void print()
+  {
     lock_guard<mutex> guard(mutex_);
     cout << counter_ << ": " << label_ << "\n";
   }
 
-  void increment() {
+  void increment()
+  {
     lock_guard<mutex> guard(mutex_);
     ++counter_;
   }
 };
 
-int main() {
+int main()
+{
   UI ui;
 
   while (ui.counter() < 10) {
@@ -76,4 +86,3 @@ int main() {
 
   return 0;
 }
-

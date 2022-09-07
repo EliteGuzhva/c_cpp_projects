@@ -1,0 +1,50 @@
+Diagnostics:
+  ClangTidy:
+    Add:
+      - 'bugprone-*'
+      - 'clang-analyzer-*'
+      - 'concurrency-*'
+      - 'cppcoreguidelines-*'
+      - 'google-*'
+      - 'hicpp-*'
+      - 'misc-*'
+      - 'modernize-*'
+      - 'performance-*'
+      - 'portability-*'
+      - 'readability-*'
+    Remove:
+      - 'bugprone-easily-swappable-parameters'
+      - 'cppcoreguidelines-owning-memory'
+      - 'cppcoreguidelines-pro-bounds-*'
+      - 'hicpp-signed-bitwise'
+      - 'hicpp-special-member-functions'
+      - 'google-build-using-namespace'
+      - 'modernize-avoid-bind'
+      - 'modernize-use-trailing-return-type'
+    CheckOptions:
+      cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: true
+      readability-braces-around-statements.ShortStatementLines: 2
+      readability-function-cognitive-complexity.Threshold: 75
+      readability-function-cognitive-complexity.IgnoreMacros: true
+      readability-implicit-bool-conversion.AllowPointerConditions: true
+      readability-identifier-length.MinimumVariableNameLength: 1
+      readability-identifier-length.MinimumParameterNameLength: 1
+      readability-identifier-naming.AbstractClassCase: 'CamelCase'
+      readability-identifier-naming.AbstractClassPrefix: 'A'
+      readability-identifier-naming.ClassCase: 'CamelCase'
+      readability-identifier-naming.EnumCase: 'CamelCase'
+      readability-identifier-naming.EnumConstantCase: 'UPPER_CASE'
+      readability-identifier-naming.StructCase: 'CamelCase'
+      readability-identifier-naming.NamespaceCase: 'snake_case'
+      readability-identifier-naming.MethodCase: 'camelBack'
+      readability-identifier-naming.ParameterCase: 'camelBack'
+      readability-identifier-naming.PublicMemberCase: 'camelBack'
+      readability-identifier-naming.ProtectedMemberCase: 'camelBack'
+      readability-identifier-naming.ProtectedMemberSuffix: '_'
+      readability-identifier-naming.PrivateMemberCase: 'camelBack'
+      readability-identifier-naming.PrivateMemberSuffix: '_'
+      readability-identifier-naming.VariableCase: 'camelBack'
+      readability-identifier-naming.ConstantMemberCase: 'UPPER_CASE'
+      readability-identifier-naming.StaticConstantCase: 'UPPER_CASE'
+      readability-identifier-naming.ConstexprVariableCase: 'UPPER_CASE'
+      readability-identifier-naming.ConstantCase: 'UPPER_CASE'

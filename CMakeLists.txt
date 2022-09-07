@@ -17,6 +17,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 
 add_subdirectory(cpp_async)
 add_subdirectory(gzv)
-add_subdirectory(pmr)
 add_subdirectory(problems)
 add_subdirectory(utils)
