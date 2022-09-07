@@ -16,10 +16,7 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
 {
   os << "{ ";
   for (size_t i = 0; i < v.size(); ++i) {
-    if (i == v.size() - 1)
-      os << v[i] << " }";
-    else
-      os << v[i] << ", ";
+    os << v[i] << i == v.size() - 1 ? " }" : ", ";
   }
   
   return os;

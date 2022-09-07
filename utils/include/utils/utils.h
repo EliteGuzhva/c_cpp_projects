@@ -7,10 +7,16 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <chrono>
 #include <iostream>
+#include <thread>
 
 #include "ostream.h"
 
+
+inline void sleepForMs(int64_t milliseconds) {
+  std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
+}
 
 inline void printSeparator(char s = '-', int length = 30) {
   for (int i = 0; i < length; ++i)

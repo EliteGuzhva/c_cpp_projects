@@ -9,67 +9,69 @@
 #include <iostream>
 #include <thread>
 
-#include <opencv2/core.hpp>
-#include <opencv2/highgui.hpp>
+#include <utils/utils.h>
 
 using namespace std;
 
 class UI {
 public:
   UI() {
-    uiThread = make_unique<thread>(&UI::run, this);
+    uiThread_ = make_unique<thread>(&UI::run, this);
   }
 
   ~UI() {
-    uiThread->join();
+    stop();
+    uiThread_->join();
+  }
+
+  [[nodiscard]] int counter() const {
+    return counter_;
   }
 
   void onFrame() {
     cout << "onFrame started\n";
-    sleep(600);
-    if (counter % 2 == 0)
-      label = "Kek";
-    else
-      label = "Lol";
+    sleepForMs(600);
+    label_ = counter_ % 2 == 0 ? "Kek" : "Lol";
     cout << "onFrame finished\n";
   }
 
   void run() {
-    while (true) {
+    while (!shouldStop_) {
       print();
       auto onFrameFuture = async(&UI::onFrame, this);
-      sleep(500);
+      sleepForMs(500);
       increment();
     }
   }
 
+  void stop() {
+    shouldStop_ = true;
+  }
+
 private:
-  int counter = 0;
-  string label = "Label";
-  mutex mutx;
-  unique_ptr<thread> uiThread;
+  int counter_ = 0;
+  string label_ = "Label";
+  mutex mutex_;
+  unique_ptr<thread> uiThread_;
+  std::atomic_bool shouldStop_ = false;
 
   void print() {
-    lock_guard<mutex> guard(mutx);
-    cout << counter << ": " << label << "\n";
+    lock_guard<mutex> guard(mutex_);
+    cout << counter_ << ": " << label_ << "\n";
   }
 
   void increment() {
-    lock_guard<mutex> guard(mutx);
-    ++counter;
-  }
-
-  static void sleep(int64_t milliseconds) {
-    this_thread::sleep_for(chrono::milliseconds(milliseconds));
+    lock_guard<mutex> guard(mutex_);
+    ++counter_;
   }
 };
 
 int main() {
   UI ui;
 
-  while (true) {
+  while (ui.counter() < 10) {
     cout << "main\n";
-    this_thread::sleep_for(chrono::seconds(1));
+    sleepForMs(1000);
   }
 
   return 0;

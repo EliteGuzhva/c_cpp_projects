@@ -6,11 +6,5 @@
 
 project(cpp_async)
 
-find_package(OpenCV REQUIRED)
-
 add_executable(cpp_async main.cpp)
-target_link_libraries(cpp_async
-  opencv::opencv_core
-  opencv::opencv_highgui
-)
-
+target_link_libraries(cpp_async utils)
